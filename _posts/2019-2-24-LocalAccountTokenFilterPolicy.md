@@ -9,7 +9,8 @@ layout: nil
 
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies
-\system\LocalAccountTokenFilterPolicy
+\system
+Key: LocalAccountTokenFilterPolicy
 ```
 
 The LocalAccountTokenFilterPolicy is a registry key related to UAC that if enabled, will strip the administrative SIDs and privileges from the token when they remotely authenticate for the system. Note that this will only happen with LOCAL Admins. Domain Admins are unaffected. There are two values with this key:
