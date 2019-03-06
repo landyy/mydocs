@@ -9,7 +9,7 @@ layout: nil
 
 WinStationSendMessageW is an undocumented function that allows you to send messages to other users on the system in the form of a text box. It can be defined as below:
 
-```
+```{
 WinStationSendMessageW(
 	IN HANDLE hServer,
 	IN ULONG SessionId
@@ -23,16 +23,18 @@ WinStationSendMessageW(
 	IN BOOLEAN DoNotWait
  );
 
-```
+}```
+
 Since it is undocumented and not parted of the loaded moduled, we must use the LoadLibrary Function to get a handle to the module
-```
+
+```{
 auto hModule = LoadLibrary(L"C:\\Windows\\System32\\winsta.dll");
  
 WinStationSendMessageWPtr WinStationSendMessageW = (WinStationSendMessageWPtr)GetProcAddress(hModule ,"WinStationSendMessageW");
 
-```
+}```
 An example of a message being sent to a user with a interactive console session (Session ID: 1) below:
-```
+```{
  WinStationSendMessageW(
     NULL,
     1,
@@ -45,4 +47,4 @@ An example of a message being sent to a user with a interactive console session 
     &response,
     TRUE
 );
-```
+}```
