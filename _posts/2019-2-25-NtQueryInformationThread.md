@@ -18,8 +18,8 @@ OUT PULONG         ReturnLength);```
 
 With the pointer defined, we can use GetProcAddress to actually locate the function and get a pointer to it
 
-```NtQueryThreadPointer NtQueryInformationThread = (NtQueryThreadPointer)GetProcAddress(
-	GetModuleHandle(L"ntdll.dll"), 
+```NtQueryThreadPointer NtQueryInformationThread = (NtQueryThreadPointer)
+	GetProcAddress(GetModuleHandle(L"ntdll.dll"), 
 	"NtQueryInformationThread");```
 
 The variable, "NtQueryInformationThread" can now be used to call the function itself.

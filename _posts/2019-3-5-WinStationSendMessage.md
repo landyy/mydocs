@@ -26,7 +26,8 @@ Since it is undocumented and not parted of the loaded moduled, we must use the L
 
 ```auto hModule = LoadLibrary(L"C:\\Windows\\System32\\winsta.dll");```
 
-```WinStationSendMessageWPtr WinStationSendMessageW = (WinStationSendMessageWPtr)GetProcAddress(hModule ,"WinStationSendMessageW");```
+```WinStationSendMessageWPtr WinStationSendMessageW = (WinStationSendMessageWPtr)
+	GetProcAddress(hModule ,"WinStationSendMessageW");```
 
 An example of a message being sent to a user with a interactive console session (Session ID: 1) below:
 
