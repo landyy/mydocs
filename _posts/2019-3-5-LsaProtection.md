@@ -9,10 +9,8 @@ layout: nil
 
 For whatever reason, the folks at Redmond decided that lsass should not be protected even though it is a integral part of the operating system. Regardless, we can enable it with the following Key
 
-```
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa
-Key: RunAsPPL
-```
+```HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa
+Key: RunAsPPL```
 
 Options:
 

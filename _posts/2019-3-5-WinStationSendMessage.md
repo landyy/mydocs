@@ -24,9 +24,9 @@ WinStationSendMessageW is an undocumented function that allows you to send messa
 
 Since it is undocumented and not parted of the loaded moduled, we must use the LoadLibrary Function to get a handle to the module
 
-```auto hModule = LoadLibrary(L"C:\\Windows\\System32\\winsta.dll");
- 
-WinStationSendMessageWPtr WinStationSendMessageW = (WinStationSendMessageWPtr)GetProcAddress(hModule ,"WinStationSendMessageW");```
+```auto hModule = LoadLibrary(L"C:\\Windows\\System32\\winsta.dll");```
+
+```WinStationSendMessageWPtr WinStationSendMessageW = (WinStationSendMessageWPtr)GetProcAddress(hModule ,"WinStationSendMessageW");```
 
 An example of a message being sent to a user with a interactive console session (Session ID: 1) below:
 
@@ -34,7 +34,7 @@ An example of a message being sent to a user with a interactive console session 
     NULL,
     1,
     testtitle,
-    wcslen(testtitle) * 4 + 1, //yeah idk how you get the proper length of an LPCWSTR
+    wcslen(testtitle) * 4 + 1, //yeah idk 
     testtext,
     wcslen(testtext) * 4 + 1,  //its a guess tbh
     MB_YESNO| MB_ICONWARNING,

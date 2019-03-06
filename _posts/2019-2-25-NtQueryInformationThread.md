@@ -9,29 +9,24 @@ layout: nil
 
 NtQueryInformationThread function can be defined as below:
 
-```
-typedef NTSTATUS(WINAPI *NtQueryThreadPointer)(
+```typedef NTSTATUS(WINAPI *NtQueryThreadPointer)(
 IN HANDLE          ThreadHandle,
 IN THREADINFOCLASS ThreadInformationClass,
 OUT PVOID          ThreadInformation,
 IN ULONG           ThreadInformationLength,
-OUT PULONG         ReturnLength);
-```
+OUT PULONG         ReturnLength);```
 
 With the pointer defined, we can use GetProcAddress to actually locate the function and get a pointer to it
 
-```
-NtQueryThreadPointer NtQueryInformationThread = (NtQueryThreadPointer)GetProcAddress(
+```NtQueryThreadPointer NtQueryInformationThread = (NtQueryThreadPointer)GetProcAddress(
 	GetModuleHandle(L"ntdll.dll"), 
-	"NtQueryInformationThread");
-```
+	"NtQueryInformationThread");```
 
 The variable, "NtQueryInformationThread" can now be used to call the function itself.
 
 While most of the vars passed are straight forward, the THREADINFOCLASS is of biggest interest and will change the most. Below is a list with a small description of different variations of the THREADINFOCLASS.
 
-```
-0x00	ThreadBasicInformation
+```0x00	ThreadBasicInformation
 0x01 	ThreadTimes
 0x02 	ThreadPriority 
 0x03 	ThreadBasePriority 
@@ -72,7 +67,6 @@ While most of the vars passed are straight forward, the THREADINFOCLASS is of bi
 0x26 	ThreadNameInformation 
 0x27 	ThreadSelectedCpuSets 
 0x28 	ThreadSystemThreadInformation 
-0x29 	ThreadActualGroupAffinity
-```
+0x29 	ThreadActualGroupAffinity```
 
 NtQueryInformationThread provides much more detail on threads that are running. For whatever reasons, the regular API does not do this so we are stuck with using this.
